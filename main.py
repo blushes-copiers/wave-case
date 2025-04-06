@@ -6,6 +6,9 @@ from fastapi.responses import HTMLResponse
 from fastapi.exceptions import HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import os
+from pathlib import Path
+import os
+
 
 allowed_origins = os.getenv("ALLOWED_ORIGINS", "").split(",")
 allowed_origins = [origin.strip() for origin in allowed_origins if origin.strip()]
@@ -66,3 +69,11 @@ def max_hwave(latitude: float, longitude: float):
         latitude=nearest_lat,
         longitude=nearest_lon,
     )
+
+@app.get("/", response_class=HTMLResponse)
+async def serve_index(tags=["web"]):
+    """
+    Serves our html with the map view
+    """
+    html = Path("static/index.html").read_text(encoding="utf-8")
+    return HTMLResponse(content=html)

@@ -25,4 +25,4 @@ You can run the app locally like so:
 fastapi dev main.py
 ```
 
-Then you should be able to view the OpenApi docs for the api at: http://localhost:8000/docs
+Then you should be able to tryout the map view at http://localhost:8000 and view the OpenApi docs for the api at: http://localhost:8000/docs
